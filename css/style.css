@@ -1,0 +1,264 @@
+/* clear formatting */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin;
+}
+
+body {
+    /*min-height: 100vh;
+    max-width: 540px;*/
+    width: 100%;
+    height: 10em;
+    box-sizing: border-box;
+}
+
+h1 { /* used in the heading, the title */
+    font-size: 50px;
+}
+
+h2 { /* used for Benefits and Risks headers */
+    padding: 5px 10px;
+    font-size: 40px;
+}
+
+h3 { /* section titles */
+    font-size: 30px;
+}
+
+.heading {
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    padding: 15px;
+    background-color: #3e2906;
+    color: #f9f8eb;
+    align-items: center;
+}
+
+.heading img {
+    max-width: 100%; /* prevents image from expanding too large */
+    justify-self: center; /* all grid items vertically centralised */
+}
+
+#logo {
+    max-height: 70%; /*image cannot be too tall */
+    min-height: 60%; /* image cannot be squished down too small */
+}
+
+#menu {
+    max-height: 60%; /*image cannot be too tall */
+    min-height: 50%; /* image cannot be squished down too small */
+}
+
+.title {
+    /*background-color: blue;*/
+    justify-self: left; /* horizontally centralised */
+    padding-top: 2%;
+    padding-left: 1%;
+}
+
+#temp {
+    background-color: yellow;
+    justify-self: center; /* horizontally centralised */
+    align-self: center; /* vertically centralised */
+}
+
+.navi {
+    grid-column: 1 / 4; /* merge, starting from line 1 to 4 --> the entire heading */
+    display: flex;
+    flex-flow: row wrap; /* row: all originally set into the same row, pushed to the next through overflow */
+                        /* wrap: moves to next line once overflow */
+    flex-grow: 1;
+}
+
+.navi a {
+    flex-basis: 100%;
+    padding: 5px;
+    color: #f9f8eb;
+    border-top: 1px solid #f9e4c3;
+    border-bottom: 1px solid #f9e4c3;
+    text-decoration: none;
+}
+
+.navi a:hover {
+    color: #a47454;
+}
+
+.navi a:active {
+    color: #674834;
+}
+
+.content {
+    display: flex;
+    flex-flow: row wrap; /* row: all originally set into the same row, pushed to the next through overflow */
+                        /* wrap: moves to next line once overflow */
+}
+
+.header {
+    flex-basis: 100%;
+    flex-grow: 1;
+}
+
+.odd {
+    background-color: #f6f5e1;
+    color: #3e2906;
+    /*f9f8eb*/
+}
+
+.even {
+    background-color: #845231;
+    color: #f9f8eb;
+    /*#963500;*/
+}
+
+#about {
+    flex-basis: 100%;
+    flex-grow: 1; /* used for box to fill up screen horizontally when in movile, fill up hald of screen (evenly) in tablet*/
+    display: grid;
+    grid-template-rows: 2;
+    justify-items: center; /* horizontally centralised */
+    row-gap: 5px; /* 5px gap between each row */
+    padding: 5px 10px;
+    border-bottom: 2px solid #f9e4c3;
+}
+
+.subtopic {
+    flex-basis: 100%;
+    flex-grow: 1; /* used for box to fill up screen horizontally when in movile, fill up hald of screen (evenly) in tablet*/
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center; /* horizontally centralised */
+    row-gap: 5px; /* 5px gap between each row */
+    padding: 5px 10px;
+    border-bottom: 2px solid #f9e4c3;
+}
+
+.clickToExpand {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center; /* horizontally centralised */
+    row-gap: 5px; /* 5px gap between each row */
+}
+
+.subtopic img {
+    max-height: 80px; /*image cannot be too tall */
+    min-height: 60px; /* image cannot be squished down too small */
+    padding: 5px;
+}
+
+/* TEMPORARY */
+#journeyline img {
+    max-height: 80px; /*image cannot be too tall */
+    min-height: 60px; /* image cannot be squished down too small */
+}
+
+.expandable {
+    background-color: red;
+    margin: 5px 10px; /* margin vs the section's background */
+}
+
+.expandable p {
+    padding: 8px 10px 5px; /* padding vs the background image */
+}
+
+/* for the Odyssey pg only, the "timeline" */
+#journeyline {
+    display: grid;
+    grid-template-columns: auto 20% auto;
+    /*grid-template-rows: 7; */
+    row-gap: 5px; /* 5px gap between each row */
+    padding: 5px 10px;
+    background-color: #f6f5e1;
+}
+
+#timeline {
+    grid-column: 2 / 3; /* middle column */
+    grid-row: 1 / span 7; /* spans across all rows */
+    justify-self: center; /* horizontally centralised */
+}
+
+.left {
+    justify-self: right; /* horizontally right */
+    padding: 5px 10px;
+}
+
+.right {
+    justify-self: left; /* horizontally left */
+    padding: 5px 10px;
+}
+
+.popup {
+    background-color: red;
+    /*display: none;*/
+    position: absolute; /* pop up does not affect alignment of the other elements and is not affected by their alignment */
+    top: 20%; /* pop up appears 20% away from the top */
+    left: 5%; /* pop up appears in the center of the screen horizontally */
+    width: 90%;
+    display: flex;
+    flex-flow: row wrap; /* row: all originally set into the same row, pushed to the next through overflow */
+                        /* wrap: moves to next line once overflow */
+    /* DISPLAY SETTINGS OF POP UP TO BE DONE */
+}
+
+/* title of the pop up */
+.popup h3 { 
+    padding: 5px 10px;
+    flex-basis: 80%;
+    flex-grow: 9;
+}
+
+/* paragraph text of the pop up */
+.popup p { 
+    padding: 5px 10px;
+    flex-basis: 90%;
+    flex-grow: 1;
+}
+
+/* x button for popups, meant to close the popup when pop up is opened */
+.close {
+    padding: 5px 10px;
+    flex-basis: 5%;
+    flex-grow: 1;
+
+    /*for the content within .close, aka the image 
+    justify-self: center; /* horizontally centralised
+    align-self: center; /* vertically centralised */
+}
+
+/* popup images, box around the image */
+.popupImage {
+    padding: 5px 10px;
+    flex-basis: 70%;
+    flex-grow: 1;
+    /* doesn't work 
+    justify-items: center; /* popup images, image itself */
+}
+
+/* doesnt work 
+/* popup images, image itself 
+.popupImage img {
+     /*for the content within .popupImage, aka the image 
+    justify-self: center; /* horizontally centralised 
+    align-self: center; /* vertically centralised 
+}*/
+
+/* TOGGLE CLASSES */
+.hidden {
+    display: none;
+}
+
+/* THEN ALL IMAGES INSIDE JOURNEYLINE JUSTIFY SELF CENTER? */
+
+/* for tablet: 541px to 720px */
+@media screen and (min-width: 541px) {    
+    #about {
+        flex-basis: 40%; /* set to 40% to ensure that 2 about/subtopic boxes can be in the same line, with flex-grow helping them fill up the screen evenly */
+    }
+    .subtopic {
+        flex-basis: 40%;
+    }
+}
+
+@media screen and (min-width: 721px) {
+    
+}
