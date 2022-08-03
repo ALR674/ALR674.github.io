@@ -5,7 +5,7 @@ let dropDown = document.querySelector(".navi"); //find drop down menu
 menu.addEventListener("click", ()=> {
     var rotationDegree = menuOpen ? 0 : 90; //if menu is open, rotate back to OG position
         //else rotate to 90 degree
-    var scalingBy = menuOpen ? 1 : -0.5;
+    var scalingBy = menuOpen ? 1 : -0.75;
     dropDown.classList.toggle("hidden");
     //menu.style.transform = 'rotate('+rotationDegree+'deg)';
     menu.style.transform = 'scale('+scalingBy+','+scalingBy+')';

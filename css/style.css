@@ -30,7 +30,7 @@ h3 { /* section titles */
     display: grid;
     grid-template-columns: 10% auto 10%;
     padding: 15px;
-    background-color: red; /*#3e2906;*/
+    background-color: #3e2906;
     color: #f9f8eb;
     align-items: center;
 }
@@ -43,8 +43,8 @@ h3 { /* section titles */
 #logo {
     /*/max-height: 70%; /*image cannot be too tall */
     /*min-height: 60%; /* image cannot be squished down too small */
-    max-height: 50px; /*image cannot be too tall */
-    min-height: 30px; /* image cannot be squished down too small */
+    max-width: 45px; /*image cannot be too tall */
+    min-width: 30px; /* image cannot be squished down too small */
 }
 
 #menu {
