@@ -30,7 +30,7 @@ h3 { /* section titles */
     display: grid;
     grid-template-columns: 10% auto 10%;
     padding: 15px;
-    background-color: #3e2906;
+    background-color: red; /*#3e2906;*/
     color: #f9f8eb;
     align-items: center;
 }
