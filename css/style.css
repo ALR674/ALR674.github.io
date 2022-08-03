@@ -265,5 +265,16 @@ h3 { /* section titles */
 }
 
 @media screen and (min-width: 721px) {
-    
+    #menu {
+        display: none; /* hide menu icon */
+    }
+    .navi {
+        display: flex; /* expose navi */
+    }
+    .navi a {
+        flex-basis: 20%; /* line all options in the same line */
+        flex-grow: 1; /* lt all options take up equal space */
+        text-align: center; /* aligns text in the element in the center of the element */
+        margin-top: 10px;
+    }
 }

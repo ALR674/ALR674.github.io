@@ -34,3 +34,4 @@ for (let i = 0; i < popupCloseButton.length; i++)
 function showHideContent(e) {
     e.currentTarget.classList.toggle("hidden");
 }
+
