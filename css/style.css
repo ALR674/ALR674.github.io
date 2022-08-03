@@ -1,8 +1,10 @@
 @keyframes shakingImg {
-    0% {transform: rotate(0deg);}
-    30% {transform: rotate(10deg);}
-    50% {transform: rotate(-10deg);}
-    80% {transform: rotate(0deg);}
+    25% {transform: rotate(0deg);}
+    30% {transform: rotate(5deg);}
+    35% {transform: rotate(-5deg);}
+    45% {transform: rotate(5deg);}
+    50% {transform: rotate(-5deg);}
+    55% {transform: rotate(0deg);}
 }
 
 /* clear formatting */
@@ -50,7 +52,7 @@ h3 { /* section titles */
 #logo {
     /*/max-height: 70%; /*image cannot be too tall */
     /*min-height: 60%; /* image cannot be squished down too small */
-    max-width: 40px; /*image cannot be too tall */
+    max-width: 35px; /*image cannot be too tall */
     min-width: 30px; /* image cannot be squished down too small */
 }
 
@@ -136,11 +138,11 @@ h3 { /* section titles */
 
 .subtopic {
     flex-basis: 100%;
-    flex-grow: 1; /* used for box to fill up screen horizontally when in movile, fill up hald of screen (evenly) in tablet*/
+    flex-grow: 1; /* used for box to fill up screen horizontally when in mobile, fill up hald of screen (evenly) in tablet*/
     display: grid;
     grid-template-columns: 100%;
     justify-items: center; /* horizontally centralised */
-    align-items: start; /* vertuically centralised */
+    align-items: start; /* vertically centralised */
     row-gap: 5px; /* 5px gap between each row */
     padding: 5px 10px;
     border-bottom: 2px solid #f9e4c3;
@@ -149,40 +151,41 @@ h3 { /* section titles */
 .subtopic p { /* overides the justify-items center for all subtopic elements */
     /* text aligns to the left */
     justify-self: flex-start;
+    margin-bottom: 10px;
 }
 
 /*links in about pg, even */
 .even a { 
     color: #f9f8eb;
-    border-bottom: 1px solid #f9e4c3;
+    /*border-bottom: 1px solid #f9e4c3;*/
     text-decoration: none;
 }
 
 .even a:hover {
     color: #3e2906;
-    border-color: #3e2906;
+    /*border-color: #3e2906;*/
 }
 
 .even a:active {
     color: #674834;
-    border-color: #674834;
+    /*border-color: #674834;*/
 }
 
 /*links in about pg, odd */
 .odd a {
     color: #3e2906;
-    border-bottom: 1px solid #3e2906;
+    /*border-bottom: 1px solid #3e2906;*/
     text-decoration: none;
 }
 
 .odd a:hover {
     color: #b15f29;
-    border-color: #b15f29;
+    /*border-color: #b15f29;*/
 }
 
 .odd a:active {
     color: #c9a187;
-    border-color: #c9a187;
+    /*border-color: #c9a187;*/
 }
 
 .clickToExpand {
@@ -192,12 +195,41 @@ h3 { /* section titles */
     row-gap: 5px; /* 5px gap between each row */
 }
 
-/* clickable img */
-.clickToExpand img {
+/*to show the headers are clickable and are clicked, even */
+.even .clickToExpand h3 { 
+    color: #f9f8eb;
+    text-decoration: none;
+}
+
+.even .clickToExpand h3:hover {
+    color: #3e2906;
+}
+
+.even .clickToExpand h3:active {
+    color: #674834;
+}
+
+/*to show the headers are clickable and are clicked, even */
+.odd .clickToExpand h3 {
+    color: #3e2906;
+    text-decoration: none;
+}
+
+.odd .clickToExpand h3:hover {
+    color: #b15f29;
+}
+
+.odd .clickToExpand h3:active {
+    color: #c9a187;
+}
+
+
+/* drop down clickable img in subtopic sections */
+    /* does not include images in about or oddessy */
+.subtopic .clickToExpand img:hover {
     animation-name: shakingImg;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
-    animation-delay: 1s;
     animation-timing-function: ease-in-out;
 }
 
@@ -205,6 +237,7 @@ h3 { /* section titles */
     max-height: 80px; /*image cannot be too tall */
     min-height: 60px; /* image cannot be squished down too small */
     padding: 5px;
+    flex-basis: 100%; /* center on pg within the a link */
 }
 
 /* TEMPORARY */
