@@ -1,3 +1,10 @@
+@keyframes shakingImg {
+    0% {transform: rotate(0deg);}
+    30% {transform: rotate(10deg);}
+    50% {transform: rotate(-10deg);}
+    80% {transform: rotate(0deg);}
+}
+
 /* clear formatting */
 * {
     margin: 0;
@@ -14,7 +21,7 @@ body {
 }
 
 h1 { /* used in the heading, the title */
-    font-size: 45px;
+    font-size: auto; /*45px */
 }
 
 h2 { /* used for Benefits and Risks headers */
@@ -43,7 +50,7 @@ h3 { /* section titles */
 #logo {
     /*/max-height: 70%; /*image cannot be too tall */
     /*min-height: 60%; /* image cannot be squished down too small */
-    max-width: 45px; /*image cannot be too tall */
+    max-width: 40px; /*image cannot be too tall */
     min-width: 30px; /* image cannot be squished down too small */
 }
 
@@ -123,7 +130,7 @@ h3 { /* section titles */
     grid-template-rows: 2;
     justify-items: center; /* horizontally centralised */
     row-gap: 5px; /* 5px gap between each row */
-    padding: 5px 10px;
+    padding: 10px 10px 5px;
     border-bottom: 2px solid #f9e4c3;
 }
 
@@ -133,9 +140,49 @@ h3 { /* section titles */
     display: grid;
     grid-template-columns: 100%;
     justify-items: center; /* horizontally centralised */
+    align-items: start; /* vertuically centralised */
     row-gap: 5px; /* 5px gap between each row */
     padding: 5px 10px;
     border-bottom: 2px solid #f9e4c3;
+}
+
+.subtopic p { /* overides the justify-items center for all subtopic elements */
+    /* text aligns to the left */
+    justify-self: flex-start;
+}
+
+/*links in about pg, even */
+.even a { 
+    color: #f9f8eb;
+    border-bottom: 1px solid #f9e4c3;
+    text-decoration: none;
+}
+
+.even a:hover {
+    color: #3e2906;
+    border-color: #3e2906;
+}
+
+.even a:active {
+    color: #674834;
+    border-color: #674834;
+}
+
+/*links in about pg, odd */
+.odd a {
+    color: #3e2906;
+    border-bottom: 1px solid #3e2906;
+    text-decoration: none;
+}
+
+.odd a:hover {
+    color: #b15f29;
+    border-color: #b15f29;
+}
+
+.odd a:active {
+    color: #c9a187;
+    border-color: #c9a187;
 }
 
 .clickToExpand {
@@ -143,6 +190,15 @@ h3 { /* section titles */
     grid-template-columns: 100%;
     justify-items: center; /* horizontally centralised */
     row-gap: 5px; /* 5px gap between each row */
+}
+
+/* clickable img */
+.clickToExpand img {
+    animation-name: shakingImg;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    animation-timing-function: ease-in-out;
 }
 
 .subtopic img {
@@ -158,12 +214,14 @@ h3 { /* section titles */
 }
 
 .expandable {
-    background-color: red;
+    /*background-color: red;*/
     margin: 5px 10px; /* margin vs the section's background */
 }
 
 .expandable p {
-    padding: 8px 10px 5px; /* padding vs the background image */
+    /*background-color: blue;*/
+    padding: 8px 8px 5px; /* padding vs the background image */
+    text-align: start;
 }
 
 /* for the Odyssey pg only, the "timeline" */
@@ -258,9 +316,11 @@ h3 { /* section titles */
 @media screen and (min-width: 541px) {    
     #about {
         flex-basis: 40%; /* set to 40% to ensure that 2 about/subtopic boxes can be in the same line, with flex-grow helping them fill up the screen evenly */
+        padding: 20px 15px 5px; /* shift subject title down with more side spacing */
     }
     .subtopic {
         flex-basis: 40%;
+        padding: 5px 15px;
     }
 }
 
