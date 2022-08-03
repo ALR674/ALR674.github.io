@@ -14,16 +14,16 @@ body {
 }
 
 h1 { /* used in the heading, the title */
-    font-size: 50px;
+    font-size: 45px;
 }
 
 h2 { /* used for Benefits and Risks headers */
     padding: 5px 10px;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 h3 { /* section titles */
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .heading {
@@ -36,18 +36,23 @@ h3 { /* section titles */
 }
 
 .heading img {
-    max-width: 100%; /* prevents image from expanding too large */
+    /*max-width: 100%; /* prevents image from expanding too large */
     justify-self: center; /* all grid items vertically centralised */
 }
 
 #logo {
-    max-height: 70%; /*image cannot be too tall */
-    min-height: 60%; /* image cannot be squished down too small */
+    /*/max-height: 70%; /*image cannot be too tall */
+    /*min-height: 60%; /* image cannot be squished down too small */
+    max-height: 50px; /*image cannot be too tall */
+    min-height: 30px; /* image cannot be squished down too small */
 }
 
 #menu {
+    max-width: 100%; /* prevents image from expanding too large */
     max-height: 60%; /*image cannot be too tall */
     min-height: 50%; /* image cannot be squished down too small */
+
+    transition: all 0.2s ease-in-out; /* used to animate rotation */
 }
 
 .title {
