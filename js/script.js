@@ -14,12 +14,21 @@ menu.addEventListener("click", ()=> {
 
 let opened; /* stores which pop up is opened, used to decide which pop up to close when the x close button of a pop up is pressed */
 
-let expandables = document.querySelectorAll(".clickToExpand");
+let expandables = document.querySelectorAll(".clicktoexpand");
 for (let i = 0; i < expandables.length; i++)
 {
     expandables[i].addEventListener("click", ()=> {
         expandables[i].nextElementSibling.classList.toggle("hidden");
         opened = expandables[i].nextElementSibling; /* stores the revealed section/opened pop up as opened */
+    })
+}
+
+let timelineEvents = document.querySelectorAll(".clickforpopup");
+for (let i = 0; i < timelineEvents.length; i++)
+{
+    timelineEvents[i].addEventListener("click", ()=> {
+        timelineEvents[i].nextElementSibling.classList.remove("hidden");
+        opened = timelineEvents[i].nextElementSibling; /* stores the revealed section/opened pop up as opened */
     })
 }
 

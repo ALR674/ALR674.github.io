@@ -23,7 +23,7 @@ body {
 }
 
 h1 { /* used in the heading, the title */
-    font-size: auto; /*45px */
+    font-size: auto; 
 }
 
 h2 { /* used for Benefits and Risks headers */
@@ -50,9 +50,7 @@ h3 { /* section titles */
 }
 
 #logo {
-    /*/max-height: 70%; /*image cannot be too tall */
-    /*min-height: 60%; /* image cannot be squished down too small */
-    max-width: 35px; /*image cannot be too tall */
+    max-width: 39px; /*image cannot be too tall */
     min-width: 30px; /* image cannot be squished down too small */
 }
 
@@ -188,7 +186,7 @@ h3 { /* section titles */
     /*border-color: #c9a187;*/
 }
 
-.clickToExpand {
+.clicktoexpand {
     display: grid;
     grid-template-columns: 100%;
     justify-items: center; /* horizontally centralised */
@@ -196,37 +194,51 @@ h3 { /* section titles */
 }
 
 /*to show the headers are clickable and are clicked, even */
-.even .clickToExpand h3 { 
+.even .clicktoexpand h3 { 
     color: #f9f8eb;
     text-decoration: none;
 }
 
-.even .clickToExpand h3:hover {
+.even .clicktoexpand h3:hover {
     color: #3e2906;
 }
 
-.even .clickToExpand h3:active {
+.even .clicktoexpand h3:active {
     color: #674834;
 }
 
-/*to show the headers are clickable and are clicked, even */
-.odd .clickToExpand h3 {
+/*to show the headers are clickable and are clicked, odd */
+.odd .clicktoexpand h3 {
     color: #3e2906;
     text-decoration: none;
 }
 
-.odd .clickToExpand h3:hover {
+.odd .clicktoexpand h3:hover {
     color: #b15f29;
 }
 
-.odd .clickToExpand h3:active {
+.odd .clicktoexpand h3:active {
+    color: #c9a187;
+}
+
+/*to show the headers are clickable and are clicked, click for pop up */
+.clickforpopup h3 {
+    color: #3e2906;
+    text-decoration: none;
+}
+
+.clickforpopup h3:hover {
+    color: #b15f29;
+}
+
+.clickforpopup h3:active {
     color: #c9a187;
 }
 
 
 /* drop down clickable img in subtopic sections */
     /* does not include images in about or oddessy */
-.subtopic .clickToExpand img:hover {
+.subtopic img:hover {
     animation-name: shakingImg;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
@@ -260,27 +272,68 @@ h3 { /* section titles */
 /* for the Odyssey pg only, the "timeline" */
 #journeyline {
     display: grid;
-    grid-template-columns: auto 20% auto;
-    /*grid-template-rows: 7; */
-    row-gap: 5px; /* 5px gap between each row */
-    padding: 5px 10px;
+    grid-template-areas: /* dictates the layout of elements inside the grid */
+        "."
+        "event1" /* . indicates an empty cell. used to alternate which side of the timeline the events are */
+        "event2"
+        "event3";
+    row-gap: 3em; /* height of the vertical gap between events */
+    position: relative; /* position relative to its normal position */
+        /* prevents the journeyline from extending past the grid area */
     background-color: #f6f5e1;
 }
 
-#timeline {
-    grid-column: 2 / 3; /* middle column */
-    grid-row: 1 / span 7; /* spans across all rows */
-    justify-self: center; /* horizontally centralised */
+/* the timeline part of the journeyline */
+#journeyline::before { /* before inserts soemthing before the journeyline element */
+    content: ""; /* no text */
+    box-sizing: border-box; /*includes content and padding, border */
+    width: 10px;
+    height: 96%; /* adjusted so there is a gap between the timeline and the header */
+        /* height + top = 100% */
+    background-color: white;
+    border: 1.5px solid rgb(92, 28, 28);
+    position: absolute; /* position in accordance with the journeyline element */
+    left: 1.5em; /* located aobut center of pg [since journeyline takes up whole width of the pg */
+    top: 4%; /* lower the timeline for a gap between the timeline and the header */
+    border-radius: 40px; /* rounded borders */
 }
 
-.left {
-    justify-self: right; /* horizontally right */
-    padding: 5px 10px;
+/* for the circles on the timeline, placed before the elements */
+.left::before, .right::before {
+    content: "";
+    box-sizing: border-box; /*includes content and padding, border */
+    position: absolute;
+    left: 1.2em; /* as centered as possible, only for mobile mode */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /* make a circle */
+    margin-top: 2.75em; /* put it about center vertically relative to the left element */
+    background-color: white;
+    border: 1.5px solid rgb(92, 28, 28);
+    z-index: 1; /* brings it fowrward, overlapping onto the timeline */
 }
 
-.right {
-    justify-self: left; /* horizontally left */
-    padding: 5px 10px;
+/* grid-area used for grid template areas for journeyline --> give the element a place in the grid */
+#event1 {
+    grid-area: event1; 
+}
+#event2 {
+    grid-area: event2; 
+}
+#event3 {
+    grid-area: event3; 
+}
+
+.left, .right {
+    justify-self: left; /* horizontally left, closer to the timeline */
+    padding: 5px 25px; /* 25px away from the timeline */
+    margin-left: 10px; /* takes the timeine's width into account */
+    width: 80%;
+}
+
+.clickforpopup {
+    display: block;
+    margin: 0px 0.5em;
 }
 
 .popup {
@@ -294,6 +347,7 @@ h3 { /* section titles */
     flex-flow: row wrap; /* row: all originally set into the same row, pushed to the next through overflow */
                         /* wrap: moves to next line once overflow */
     /* DISPLAY SETTINGS OF POP UP TO BE DONE */
+    z-index: 2; /* bring forward even before points in timeline */
 }
 
 /* title of the pop up */
@@ -347,6 +401,11 @@ h3 { /* section titles */
 
 /* for tablet: 541px to 720px */
 @media screen and (min-width: 541px) {    
+    #logo {
+        max-width: 55px; /*image cannot be too tall */
+        min-width: 45px; /* image cannot be squished down too small */
+    }
+    
     #about {
         flex-basis: 40%; /* set to 40% to ensure that 2 about/subtopic boxes can be in the same line, with flex-grow helping them fill up the screen evenly */
         padding: 20px 15px 5px; /* shift subject title down with more side spacing */
@@ -355,8 +414,42 @@ h3 { /* section titles */
         flex-basis: 40%;
         padding: 5px 15px;
     }
+
+    /* for the Odyssey pg only, the "timeline" */
+    #journeyline {
+        grid-template-columns: 46% 46%; /* used to make both columns same width. not 100% due to the column gap */
+        grid-template-areas: /* dictates the layout of elements inside the grid */
+            ". ."
+            "event1 ." /* . indicates an empty cell. used to alternate which side of the timeline the events are */
+            ". event2"
+            "event3 .";
+        column-gap: 8%; /* width of the sections with the timeline */
+        row-gap: 3em; /* height of the vertical gap between events */
+    }
+
+    /* the timeline part of the journeyline */
+    #journeyline::before { /* before inserts soemthing before the journeyline element */
+        left: 49%; /* located aobut center of pg [since journeyline takes up whole width of the pg */
+    }
+
+    /* for the circles on the timeline, placed before the elements */
+    .left::before, .right::before {
+        width: 25px;
+        height: 25px;
+        left: 47.75%; /* as centered as possible, only for tablet mode */
+    }
+
+    .left {
+        justify-self: right; /* horizontally right, closer to the timeline */
+        margin-left: 0px; /* takes the timeine's width into account */
+    }
+    
+    .right {
+        margin-left: 0px;
+    }
 }
 
+/* for computer */
 @media screen and (min-width: 721px) {
     #menu {
         display: none; /* hide menu icon */
@@ -369,5 +462,18 @@ h3 { /* section titles */
         flex-grow: 1; /* lt all options take up equal space */
         text-align: center; /* aligns text in the element in the center of the element */
         margin-top: 10px;
+    }
+
+    /* the timeline part of the journeyline */
+    #journeyline::before { /* before inserts soemthing before the journeyline element */
+        width: 12.5px;
+        left: 49.65%; /* located aobut center of pg [since journeyline takes up whole width of the pg */
+    }
+
+    /* for the circles on the timeline, placed before the elements */
+    .left::before, .right::before {
+        width: 30px;
+        height: 30px;
+        left: 49%; /* as centered as possible, only for tablet mode */
     }
 }
