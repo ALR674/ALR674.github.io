@@ -15,8 +15,6 @@
 }
 
 body {
-    /*min-height: 100vh;
-    max-width: 540px;*/
     width: 100%;
     height: 10em;
     box-sizing: border-box;
@@ -35,6 +33,10 @@ h3 { /* section titles */
     font-size: 25px;
 }
 
+p, a { /* content */
+    font-size: 18px;
+}
+
 .heading {
     display: grid;
     grid-template-columns: 10% auto 10%;
@@ -45,7 +47,6 @@ h3 { /* section titles */
 }
 
 .heading img {
-    /*max-width: 100%; /* prevents image from expanding too large */
     justify-self: center; /* all grid items vertically centralised */
 }
 
@@ -63,7 +64,6 @@ h3 { /* section titles */
 }
 
 .title {
-    /*background-color: blue;*/
     justify-self: left; /* horizontally centralised */
     padding-top: 2%;
     padding-left: 1%;
@@ -81,6 +81,11 @@ h3 { /* section titles */
     flex-flow: row wrap; /* row: all originally set into the same row, pushed to the next through overflow */
                         /* wrap: moves to next line once overflow */
     flex-grow: 1;
+
+    max-height: 0px; /* used for transition in dropping down */
+    overflow: hidden; /* hide text when ma-height is 0 */
+    transition: max-height 0.2s ease-out;
+        /* translate according to its max height in 0.2s, easing out to slowly drop down */
 }
 
 .navi a {
@@ -100,6 +105,11 @@ h3 { /* section titles */
     color: #674834;
 }
 
+/* the indented links specific to the pg */
+.sublink {
+    margin-left: 50px;
+}
+
 .content {
     display: flex;
     flex-flow: row wrap; /* row: all originally set into the same row, pushed to the next through overflow */
@@ -114,13 +124,11 @@ h3 { /* section titles */
 .odd {
     background-color: #f6f5e1;
     color: #3e2906;
-    /*f9f8eb*/
 }
 
 .even {
     background-color: #845231;
     color: #f9f8eb;
-    /*#963500;*/
 }
 
 #about {
@@ -132,6 +140,10 @@ h3 { /* section titles */
     row-gap: 5px; /* 5px gap between each row */
     padding: 10px 10px 5px;
     border-bottom: 2px solid #f9e4c3;
+}
+
+#about h3 {
+    align-self: flex-end;
 }
 
 .subtopic {
@@ -146,6 +158,13 @@ h3 { /* section titles */
     border-bottom: 2px solid #f9e4c3;
 }
 
+.subtopic a {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center; /* horizontally centralised */
+    row-gap: 5px; /* 5px gap between each row */
+}
+
 .subtopic p { /* overides the justify-items center for all subtopic elements */
     /* text aligns to the left */
     justify-self: flex-start;
@@ -155,35 +174,29 @@ h3 { /* section titles */
 /*links in about pg, even */
 .even a { 
     color: #f9f8eb;
-    /*border-bottom: 1px solid #f9e4c3;*/
     text-decoration: none;
 }
 
 .even a:hover {
     color: #3e2906;
-    /*border-color: #3e2906;*/
 }
 
 .even a:active {
     color: #674834;
-    /*border-color: #674834;*/
 }
 
 /*links in about pg, odd */
 .odd a {
     color: #3e2906;
-    /*border-bottom: 1px solid #3e2906;*/
     text-decoration: none;
 }
 
 .odd a:hover {
     color: #b15f29;
-    /*border-color: #b15f29;*/
 }
 
 .odd a:active {
     color: #c9a187;
-    /*border-color: #c9a187;*/
 }
 
 .clicktoexpand {
@@ -191,6 +204,7 @@ h3 { /* section titles */
     grid-template-columns: 100%;
     justify-items: center; /* horizontally centralised */
     row-gap: 5px; /* 5px gap between each row */
+    text-align: center;
 }
 
 /*to show the headers are clickable and are clicked, even */
@@ -235,7 +249,6 @@ h3 { /* section titles */
     color: #c9a187;
 }
 
-
 /* drop down clickable img in subtopic sections */
     /* does not include images in about or oddessy */
 .subtopic img:hover {
@@ -252,19 +265,16 @@ h3 { /* section titles */
     flex-basis: 100%; /* center on pg within the a link */
 }
 
-/* TEMPORARY */
-#journeyline img {
-    max-height: 80px; /*image cannot be too tall */
-    min-height: 60px; /* image cannot be squished down too small */
-}
-
+/* the parts that will drop down */
 .expandable {
-    /*background-color: red;*/
+    max-height: 0px; /* used for transition in dropping down */
+    overflow: hidden; /* hide text when ma-height is 0 */
     margin: 5px 10px; /* margin vs the section's background */
+    transition: max-height 0.2s ease-out;
+        /* translate according to its max height in 0.2s, easing out to slowly drop down */
 }
 
 .expandable p {
-    /*background-color: blue;*/
     padding: 8px 8px 5px; /* padding vs the background image */
     text-align: start;
 }
@@ -276,7 +286,10 @@ h3 { /* section titles */
         "."
         "event1" /* . indicates an empty cell. used to alternate which side of the timeline the events are */
         "event2"
-        "event3";
+        "event3"
+        "event4"
+        "event5"
+        "event6";
     row-gap: 3em; /* height of the vertical gap between events */
     position: relative; /* position relative to its normal position */
         /* prevents the journeyline from extending past the grid area */
@@ -291,7 +304,7 @@ h3 { /* section titles */
     height: 96%; /* adjusted so there is a gap between the timeline and the header */
         /* height + top = 100% */
     background-color: white;
-    border: 1.5px solid rgb(92, 28, 28);
+    border: 1.5px solid #b15f29;
     position: absolute; /* position in accordance with the journeyline element */
     left: 1.5em; /* located aobut center of pg [since journeyline takes up whole width of the pg */
     top: 4%; /* lower the timeline for a gap between the timeline and the header */
@@ -309,7 +322,7 @@ h3 { /* section titles */
     border-radius: 50%; /* make a circle */
     margin-top: 2.75em; /* put it about center vertically relative to the left element */
     background-color: white;
-    border: 1.5px solid rgb(92, 28, 28);
+    border: 1.5px solid #b15f29;
     z-index: 1; /* brings it fowrward, overlapping onto the timeline */
 }
 
@@ -322,6 +335,15 @@ h3 { /* section titles */
 }
 #event3 {
     grid-area: event3; 
+}
+#event4 {
+    grid-area: event4; 
+}
+#event5 {
+    grid-area: event5; 
+}
+#event6 {
+    grid-area: event6; 
 }
 
 .left, .right {
@@ -336,24 +358,34 @@ h3 { /* section titles */
     margin: 0px 0.5em;
 }
 
+.clickforpopup img {
+    max-width: 180px; /*image cannot be too long */
+    min-width: 160px; /* image cannot be squished too thin */
+}
+
 .popup {
-    background-color: red;
-    /*display: none;*/
-    position: absolute; /* pop up does not affect alignment of the other elements and is not affected by their alignment */
-    top: 20%; /* pop up appears 20% away from the top */
-    left: 5%; /* pop up appears in the center of the screen horizontally */
+    background-color: white;
+    border: 1.5px solid #845231;
+    border-radius: 20px 20px;
+    position: fixed; /* pop up does not affect alignment of the other elements and is not affected by their alignment */
+    top: 10%; /* pop up appears 10% away from the top */
+    left: -100%; 
+        /* - 100% to make it completely off screen */
+        /* 5% for pop up appears in the center of the screen horizontally */
     width: 90%;
+    min-height: 80%;
+    max-height: 85%;
+    overflow: scroll;
     display: flex;
     flex-flow: row wrap; /* row: all originally set into the same row, pushed to the next through overflow */
                         /* wrap: moves to next line once overflow */
-    /* DISPLAY SETTINGS OF POP UP TO BE DONE */
     z-index: 2; /* bring forward even before points in timeline */
 }
 
 /* title of the pop up */
 .popup h3 { 
     padding: 5px 10px;
-    flex-basis: 80%;
+    flex-basis: 85%;
     flex-grow: 9;
 }
 
@@ -366,38 +398,51 @@ h3 { /* section titles */
 
 /* x button for popups, meant to close the popup when pop up is opened */
 .close {
-    padding: 5px 10px;
+    padding-top: 4px;
     flex-basis: 5%;
     flex-grow: 1;
-
-    /*for the content within .close, aka the image 
-    justify-self: center; /* horizontally centralised
-    align-self: center; /* vertically centralised */
+    font-size: 20px;
 }
 
-/* popup images, box around the image */
-.popupImage {
-    padding: 5px 10px;
-    flex-basis: 70%;
-    flex-grow: 1;
-    /* doesn't work 
-    justify-items: center; /* popup images, image itself */
+.popup img {
+    /* use margin to center image since justify-self doesnt work for flex */
+    margin: 4% auto;
+    max-width: 70%; /*image cannot be too long */
+    min-width: 60%; /* image cannot be squished too thin */
 }
 
-/* doesnt work 
-/* popup images, image itself 
-.popupImage img {
-     /*for the content within .popupImage, aka the image 
-    justify-self: center; /* horizontally centralised 
-    align-self: center; /* vertically centralised 
-}*/
+.references {
+    flex-basis: 100%;
+    border-top: 2px solid #3e2906;
+    background-color: #c9a187;
+    row-gap: 1.5px;;
+    padding: 5px;
+}
 
-/* TOGGLE CLASSES */
+.references h3 {
+    color: #674834;
+    font-size: x-large;
+}
+
+.references a {
+    text-decoration: none;
+    color: #f6f5e1;
+    font-size: medium;
+}
+
+.references a:hover {
+    color: #3e2906;
+}
+
+.references a:active {
+    color: #674834;
+}
+
+
+/* TOGGLE menu button */
 .hidden {
     display: none;
 }
-
-/* THEN ALL IMAGES INSIDE JOURNEYLINE JUSTIFY SELF CENTER? */
 
 /* for tablet: 541px to 720px */
 @media screen and (min-width: 541px) {    
@@ -422,7 +467,10 @@ h3 { /* section titles */
             ". ."
             "event1 ." /* . indicates an empty cell. used to alternate which side of the timeline the events are */
             ". event2"
-            "event3 .";
+            "event3 ."
+            ". event4"
+            "event5 ."
+            ". event6";
         column-gap: 8%; /* width of the sections with the timeline */
         row-gap: 3em; /* height of the vertical gap between events */
     }
@@ -451,11 +499,19 @@ h3 { /* section titles */
 
 /* for computer */
 @media screen and (min-width: 721px) {
+    h1 { /* used in the heading, the title */
+        font-size: 50px; 
+    }
     #menu {
         display: none; /* hide menu icon */
     }
+    #logo {
+        max-width: 70px; /*image cannot be too tall */
+        min-width: 55px; /* image cannot be squished down too small */
+    }
     .navi {
         display: flex; /* expose navi */
+        max-height: fit-content; /* change max-height from 0 to a size according to its content's size so that it becomes visible */
     }
     .navi a {
         flex-basis: 20%; /* line all options in the same line */
@@ -464,9 +520,50 @@ h3 { /* section titles */
         margin-top: 10px;
     }
 
+    #about {
+        flex-basis: 100%; /* 1 per row */
+        padding: 40px 15px 5px; /* shift subject title down with more side spacing */
+        row-gap: 15px; /* 15px gap between each row */
+    }
+    #about p 
+    {
+        width: 60%; /* limits how far the text can stretch --> easier to read */
+    }
+    .subtopic {
+        flex-basis: 100%;
+        padding: 30px 15px;
+        row-gap: 15px; /* 15px gap between each row */
+        align-items: center;
+    }
+    .even {
+        grid-template-columns: auto 70%;
+    }
+    .odd {
+        grid-template-columns: 70% auto;
+    }
+    .odd p {
+        order: -1; /*shift p to be first in order for alignment purposes */
+    }
+    .subtopic p {
+        width: 70%; /* limits how far the text can stretch --> easier to read */
+        justify-self: center;
+    }
+
+    /* placed below to override what was mention above for .odd sincee it affects elemtn with #about as well */
+    #about {
+        flex-basis: 100%; /* 1 per row */
+        padding: 40px 15px; /* shift subject title down with more side spacing */
+        row-gap: 15px; /* 15px gap between each row */
+        grid-template-columns: 100%; /* takes full row */
+    }
+    #about h3 {
+        order: -1; /* header before text */
+    }
+
     /* the timeline part of the journeyline */
     #journeyline::before { /* before inserts soemthing before the journeyline element */
         width: 12.5px;
+        top: 1%;
         left: 49.65%; /* located aobut center of pg [since journeyline takes up whole width of the pg */
     }
 
@@ -475,5 +572,33 @@ h3 { /* section titles */
         width: 30px;
         height: 30px;
         left: 49%; /* as centered as possible, only for tablet mode */
+    }
+
+    .left, .right {
+        width: 60%;
+    }
+
+    .left .popup {
+        position: relative; /* pop up does not affect alignment of the other elements and is not affected by their alignment */
+        top: 1em; /* pop up appears 20% away from the top */
+        left: -220%; 
+            /* left is -40%: pop up appears in the center of the screen horizontally */
+            /* left is -220%: pop up is completely off screen */
+        width: 150%;
+        min-height: 0%;
+        max-height: 300%; /* remove need for scroll bar */
+        overflow: hidden; /*remove scroll bar */
+    }
+
+    .right .popup {
+        position: relative; /* pop up does not affect alignment of the other elements and is not affected by their alignment */
+        top: 1em; /* pop up appears 20% away from the top */
+        left: -360%; 
+            /* left is 0%: pop up appears in the center of the screen horizontally */
+            /* left is -360%: pop up is completely off screen */
+        width: 150%;
+        min-height: 0%;
+        max-height: 300%; /* remove need for scroll bar */
+        overflow: hidden; /*remove scroll bar */
     }
 }
