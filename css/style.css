@@ -510,8 +510,8 @@ p, a { /* content */
     height: 50px;
 }
 
-/* dislpay score from game */
-#score {
+/* dislpay title and score from game */
+#minititle, #score {
     flex-basis: 100%;
     margin-left: 10%;
     padding: 1% 0%;
@@ -601,6 +601,10 @@ p, a { /* content */
     .coffeebean {
         width: 40px;
         height: 60px;
+    }
+
+    #minititle {
+        margin-top: 2%;
     }
 }
 
@@ -712,7 +716,7 @@ p, a { /* content */
     #gamefield {
         width: 700px; /* fix a width */
         height: 600px; /* fix a height */
-        margin: 30px auto 5px; /* 5px border at tope and bottom*/
+        margin: 5px auto; /* 5px border at tope and bottom*/
                 /* auto centers the container on pg horizontally */
     }
 

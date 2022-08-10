@@ -3,7 +3,6 @@ var menuOpen = false; //used to decide what degree to rotate the menu icon to
 let menu = document.querySelector("#menu"); //find the menu icon img
 let dropDown = document.querySelector(".navi"); //find drop down menu
 menu.addEventListener("click", ()=> {
-    var rotationDegree = menuOpen ? 0 : 90; //if menu is open, rotate back to OG position
         //else rotate to 90 degree
     var scalingBy = menuOpen ? 1 : -0.75;
      /* if dropDown is open, aka maxHeight isn't 0 so text is showing */
@@ -19,7 +18,6 @@ menu.addEventListener("click", ()=> {
             /* this sets the maxHeight to the scrollHeight, causing the text to appear */
     }
     
-    //menu.style.transform = 'rotate('+rotationDegree+'deg)';
     menu.style.transform = 'scale('+scalingBy+','+scalingBy+')';
     menuOpen = !menuOpen;
 });
