@@ -18,6 +18,7 @@ body {
     width: 100%;
     height: 10em;
     box-sizing: border-box;
+    background-color: #845231;
 }
 
 h1 { /* used in the heading, the title */
@@ -169,6 +170,25 @@ p, a { /* content */
     /* text aligns to the left */
     justify-self: flex-start;
     margin-bottom: 10px;
+}
+
+#qr {
+    flex-basis: 100%;
+    flex-grow: 1; /* used for box to fill up screen horizontally when in movile, fill up hald of screen (evenly) in tablet*/
+    display: none; /* set display to grid in tablet mode */
+        /* hidden in mobile mode */
+    grid-template-rows: 2;
+    justify-items: center; /* horizontally centralised */
+    row-gap: 5px; /* 5px gap between each row */
+    padding: 10px 10px 5px;
+    border-bottom: 2px solid #f9e4c3;
+}
+
+#qr img {
+    max-height: 100px; /*image cannot be too tall */
+    min-height: 80px; /* image cannot be squished down too small */
+    padding: 5px;
+    flex-basis: 100%; /* center on pg within the a link */
 }
 
 /*links in about pg, even */
@@ -364,7 +384,7 @@ p, a { /* content */
 }
 
 .popup {
-    background-color: white;
+    background-color: #f9f8eb;
     border: 1.5px solid #845231;
     border-radius: 20px 20px;
     position: fixed; /* pop up does not affect alignment of the other elements and is not affected by their alignment */
@@ -438,6 +458,64 @@ p, a { /* content */
     color: #674834;
 }
 
+/* for the catch coffee beans mini game */
+#gamefield {
+    width: 400px; /* fix a width */
+    height: 300px; /* fix a height */
+    background-color: #f9f8eb;
+    border: 2px solid #3e2906;
+    margin: 5px auto; /* 5px border at tope and bottom*/
+            /* auto centers the container on pg horizontally */
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+}
+
+/* arrows player can use to move the cup */
+#leftarrow, #rightarrow {
+    width: 20px;
+    height: 150px;
+    margin: auto; /* center horizontally and vertically */
+}
+
+/* change background colour upon hover to show that player is hovering over the arrows */
+#leftarrow:hover, #rightarrow:hover {
+    background-color: #c9a187;
+}
+
+#leftarrow {
+    transform: rotateZ(180deg);
+}
+
+#playingfield {
+    width: auto;
+    height: auto;
+    background-color: #f6f5e1;
+}
+
+/* player controlled object that catches the beans */
+#playerscup {
+    width: 100px;
+    height: 60px;
+    position: relative;
+    top: 187px; /* line cup with the bottom line */
+    left: 0px;
+    /* playing width is 320 px */
+        /* max width player's cup can travel is 220px */
+        /* playingfield's width - playerscup's width */
+}
+
+.coffeebean {
+    position: relative;
+    width: 35px;
+    height: 50px;
+}
+
+/* dislpay score from game */
+#score {
+    flex-basis: 100%;
+    margin-left: 10%;
+    padding: 1% 0%;
+}
 
 /* TOGGLE menu button */
 .hidden {
@@ -458,6 +536,9 @@ p, a { /* content */
     .subtopic {
         flex-basis: 40%;
         padding: 5px 15px;
+    }
+    #qr {
+        display: grid; /* appears */
     }
 
     /* for the Odyssey pg only, the "timeline" */
@@ -495,6 +576,32 @@ p, a { /* content */
     .right {
         margin-left: 0px;
     }
+
+    /* for the catch coffee beans mini game */
+    #gamefield {
+        width: 500px; /* fix a width */
+        height: 400px; /* fix a height */
+        margin: 10px auto 5px; /* 5px border at tope and bottom*/
+                /* auto centers the container on pg horizontally */
+    }
+
+    /* arrows player can use to move the cup */
+    #leftarrow, #rightarrow {
+        width: 25px;
+        height: 200px;
+    }
+
+    /* player controlled object that catches the beans */
+    #playerscup {
+        width: 120px;
+        height: 70px;
+        top: 267px; /* line cup with the bottom line */
+    }
+
+    .coffeebean {
+        width: 40px;
+        height: 60px;
+    }
 }
 
 /* for computer */
@@ -520,11 +627,6 @@ p, a { /* content */
         margin-top: 10px;
     }
 
-    #about {
-        flex-basis: 100%; /* 1 per row */
-        padding: 40px 15px 5px; /* shift subject title down with more side spacing */
-        row-gap: 15px; /* 15px gap between each row */
-    }
     #about p 
     {
         width: 60%; /* limits how far the text can stretch --> easier to read */
@@ -550,16 +652,20 @@ p, a { /* content */
     }
 
     /* placed below to override what was mention above for .odd sincee it affects elemtn with #about as well */
-    #about {
+    #about, #qr {
         flex-basis: 100%; /* 1 per row */
         padding: 40px 15px; /* shift subject title down with more side spacing */
         row-gap: 15px; /* 15px gap between each row */
         grid-template-columns: 100%; /* takes full row */
     }
-    #about h3 {
+    #about h3, #qr h3 {
         order: -1; /* header before text */
     }
-
+    #qr img {
+        max-height: 120px; /*image cannot be too tall */
+        min-height: 100px; /* image cannot be squished down too small */
+    }
+   
     /* the timeline part of the journeyline */
     #journeyline::before { /* before inserts soemthing before the journeyline element */
         width: 12.5px;
@@ -600,5 +706,31 @@ p, a { /* content */
         min-height: 0%;
         max-height: 300%; /* remove need for scroll bar */
         overflow: hidden; /*remove scroll bar */
+    }
+
+    /* for the catch coffee beans mini game */
+    #gamefield {
+        width: 700px; /* fix a width */
+        height: 600px; /* fix a height */
+        margin: 30px auto 5px; /* 5px border at tope and bottom*/
+                /* auto centers the container on pg horizontally */
+    }
+
+    /* arrows player can use to move the cup */
+    #leftarrow, #rightarrow {
+        height: 220px;
+        margin-bottom: 200%;
+    }
+
+    /* player controlled object that catches the beans */
+    #playerscup {
+        width: 160px;
+        height: 90px;
+        top: 437px; /* line cup with the bottom line */
+    }
+
+    .coffeebean {
+        width: 50px;
+        height: 70px;
     }
 }

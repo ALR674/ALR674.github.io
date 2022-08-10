@@ -7,6 +7,7 @@
         <title> Coffee Beans </title>
         <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js" defer></script>
+        <script src="js/gamescript.js" defer></script>
     </head>
     <body>
         <!-- title heading, contains navigation bar -->
@@ -109,6 +110,26 @@
                     Despite being so common, the price of Arabica beans are higher than most. This is due to how hard it is to grow Arabica beans. Though they grow in about 50 countries around the world, they require shade, water and a high altitude to grow properly. Such conditions are not so easy to secure. Their plants are also weaker to plant diseases, adding to the difficulty of growing them.
                 </p>
             </div>
+
+            <!-- for the collect coffee beans game -->
+            <div id="gamefield">
+                <img src="images/side arrow.png" alt="leftArrow" id="leftarrow">
+                <!-- image credit: <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by Roundicons - Flaticon</a> recoloured-->
+
+                <!-- where the coffee cup and beans can move about -->
+                <div id="playingfield">
+                    <!-- level where the coffee beans are generated before they fall down -->
+                    <div id="cbeangenerator">
+                        <!-- all coffee beans will be created and placed here -->
+                    </div>
+                    <img src="images/coffee cup.png" alt="cCfup" id="playerscup">
+                    <!-- image credit: <a href="https://www.flaticon.com/free-icons/coffee" title="coffee icons">Coffee icons created by mynamepong - Flaticon</a> cropped -->
+                </div>
+                <img src="images/side arrow.png" alt="rightArrow" id="rightarrow">
+            </div>
+
+            <!-- score display -->
+            <h3 id="score" class="even"> Score: 0</h3>
 
             <!-- References used section -->
             <div class="references">

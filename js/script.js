@@ -76,7 +76,7 @@ if (width < 721)
                     popup.style.left = posFromLeft + "%";
                 }
 
-            }, 5) //moves a bit every 10 miliseconds
+            }, 5) //moves a bit every 5 miliseconds
             
             opened = popup; /* stores the opened pop up as opened */
         })
